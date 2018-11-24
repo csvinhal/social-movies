@@ -12,20 +12,23 @@ export class MovieService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public listMovies(term: string) {
+  public listMovies(term: string, page = '1') {
     return this.httpClient
-      .jsonp(`${this.apiUrl}&s=${term}`, 'callback')
+      .jsonp(`${this.apiUrl}&s=${term}&page=${page}`, 'callback')
       .pipe(
         map(
           (response: any) =>
-            response && response.Search && response.Search.map(this.parseMovie)
+            response && {
+              totalResults: response.totalResults,
+              movies: response.Search && response.Search.map(this.parseMovie)
+            }
         )
       );
   }
 
   public getMovie(imdbId: string) {
     return this.httpClient
-      .jsonp(`${this.apiUrl}&i=${imdbId}`, 'callback')
+      .jsonp(`${this.apiUrl}&i=${imdbId}&plot=full`, 'callback')
       .pipe(map((response: any) => this.parseMovieDetail(response)));
   }
 
@@ -33,6 +36,7 @@ export class MovieService {
     const movie: Partial<Movie> = {};
     movie.imdb = info.imdbID;
     movie.title = info.Title;
+    movie.year = info.Year;
     return movie as Movie;
   }
 

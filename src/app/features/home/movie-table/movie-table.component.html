@@ -1,0 +1,33 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Título</th>
+      <th scope="col">Ano</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.year }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="onSelect(movie.imdb)"
+        >
+          Detalhes
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ngb-pagination
+  class="pagination"
+  [(page)]="page"
+  [collectionSize]="totalRecords"
+  [maxSize]="maxSize"
+  (pageChange)="onPageChange($event)"
+  aria-label="Default pagination"
+></ngb-pagination>

@@ -2,27 +2,37 @@
   <div class="row">
     <div class="col-6 mx-auto">
       <h1 class="text-center font-weight-bold">Social Movies</h1>
-      <span class="d-block text-center font-weight-bold mb-3">Todos os filmes em um só lugar!</span>
+      <span class="d-block text-center font-weight-bold mb-3"
+        >Todos os filmes em um só lugar!</span
+      >
     </div>
   </div>
   <div class="row">
     <div class="col-6 mx-auto">
-      <input
-        id="ff-music-search"
-        #search
-        type="text"
-        class="form-control"
-        placeholder="Pesquise o filme:"
-        [ngbTypeahead]="onSearch"
-        [resultTemplate]="resultTemplate"
-        (selectItem)="onSelect($event)"
-      />
+      <div class="form-group">
+        <input
+          #search
+          type="text"
+          class="form-control"
+          id="ff-music-search"
+          [(ngModel)]="searchText"
+          placeholder="Pesquise o filme:"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSearch()">
+        Filtrar
+      </button>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="col">
+      <app-movie-table
+        [movies]="movies"
+        [totalRecords]="totalRecords"
+        (select)="onSelect($event)"
+        (pageChange)="onPageChange($event)"
+      ></app-movie-table>
     </div>
   </div>
 </div>
-
-<ng-template #resultTemplate let-r="result" let-t="term">
-  <div class="text-truncate" [style.width.px]="search.offsetWidth - 48">
-    <ngb-highlight [result]="r?.title" [term]="t"></ngb-highlight>
-  </div>
-</ng-template>
