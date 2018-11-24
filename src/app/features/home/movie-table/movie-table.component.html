@@ -1,33 +1,40 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Título</th>
-      <th scope="col">Ano</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let movie of movies">
-      <td>{{ movie.title }}</td>
-      <td>{{ movie.year }}</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-outline-dark"
-          (click)="onSelect(movie.imdb)"
-        >
-          Detalhes
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div
+  id="dv-movie-table"
+  [ngClass]="{ visible: movies?.length, invisible: !movies?.length }"
+>
+  <table class="table">
+    <thead>
+      <tr>
+        <th id="th-title" scope="col">Título</th>
+        <th id="th-year" scope="col">Ano</th>
+        <th id="th-action" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies; let i = index">
+        <td id="td-title-{{i}}">{{ movie.title }}</td>
+        <td id="td-year-{{i}}">{{ movie.year }}</td>
+        <td id="td-action-{{i}}">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="onSelect(movie.imdb)"
+            data-toggle="modal"
+            data-target="#movie-detail-modal"
+          >
+            Detalhes
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<ngb-pagination
-  class="pagination"
-  [(page)]="page"
-  [collectionSize]="totalRecords"
-  [maxSize]="maxSize"
-  (pageChange)="onPageChange($event)"
-  aria-label="Default pagination"
-></ngb-pagination>
+  <ngb-pagination
+    class="pagination"
+    [(page)]="page"
+    [collectionSize]="totalRecords"
+    [maxSize]="maxSize"
+    (pageChange)="onPageChange($event)"
+    aria-label="Default pagination"
+  ></ngb-pagination>
+</div>

@@ -19,7 +19,7 @@ import { MovieService } from '../../shared/services/movie.service';
 export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('search')
   public search: ElementRef;
-  public searchText: string;
+  public searchText: string = '';
   public movies: Movie[];
   public totalRecords: number = 0;
 
