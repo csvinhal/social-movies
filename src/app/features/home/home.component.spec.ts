@@ -1,9 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home.component';
+import { MovieTableModule } from './movie-table/movie-table.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,7 +16,8 @@ describe('HomeComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        NgbTypeaheadModule
+        FormsModule,
+        MovieTableModule
       ]
     }).compileComponents();
   }));

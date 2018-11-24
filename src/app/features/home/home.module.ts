@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { MovieTableModule } from './movie-table/movie-table.module';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, NgbTypeaheadModule, HomeRoutingModule]
+  imports: [CommonModule, FormsModule, HomeRoutingModule, MovieTableModule]
 })
 export class HomeModule {}
