@@ -8,7 +8,7 @@ import { MovieDetail } from '../models/movie-detail';
 
 @Injectable({ providedIn: 'root' })
 export class MovieService {
-  private apiUrl = `http://www.omdbapi.com/?apikey=${environment.apiKey}`;
+  private apiUrl = `//www.omdbapi.com/?apikey=${environment.apiKey}`;
 
   constructor(private httpClient: HttpClient) {}
 
