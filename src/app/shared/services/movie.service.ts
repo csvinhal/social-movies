@@ -49,8 +49,8 @@ export class MovieService {
     movie.runtime = info.Runtime;
     movie.genre = info.Genre;
     movie.director = info.Director;
-    movie.poster = info.Poster;
-    movie.plot = info.Plot;
+    movie.poster = info.Poster && info.Poster !== 'N/A' ? info.Poster : 'assets/no-image.jpg';
+    movie.plot = info.Plot && info.Plot !== 'N/A' ? info.Plot : 'Sem descrição disponível.';
     return movie as MovieDetail;
   }
 }

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 
 import { Movie } from '../../../shared/models/movie';
 
@@ -19,12 +21,16 @@ export class MovieTableComponent implements OnInit {
   public page: number = 1;
   public maxSize: number = 3;
 
-  constructor() {}
+  constructor(private modalService: NgbModal) {}
 
   public ngOnInit() {}
 
   public onSelect(imdb: string) {
-    this.select.emit(imdb);
+    const modalRef = this.modalService.open(MovieDetailComponent, {
+      size: 'lg',
+      centered: true
+    });
+    modalRef.componentInstance.imdb = imdb;
   }
 
   public onPageChange(event: any) {
