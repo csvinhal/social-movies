@@ -1,0 +1,18 @@
+<div class="container row">
+  <div class="mx-5">
+    <figure class="figure">
+      <img
+        [src]="movieDetail?.poster"
+        class="figure-img img-fluid rounded"
+        alt="A generic square placeholder image with rounded corners in a figure."
+      />
+      <figcaption class="figure-caption">
+        Poster do filme {{ movieDetail?.title }}.
+      </figcaption>
+    </figure>
+  </div>
+  <div class="col">
+    <h1 class="text-center">{{ movieDetail?.title }}</h1>
+    <p class="text-justify">{{ movieDetail?.plot }}</p>
+  </div>
+</div>

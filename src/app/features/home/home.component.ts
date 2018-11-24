@@ -37,6 +37,6 @@ export class HomeComponent implements OnInit {
   }) {
     event.preventDefault();
     this.search.nativeElement.value = '';
-    this.router.navigate([`${event.item.imdb}`]);
+    this.router.navigate([`movie/${event.item.imdb}`]);
   }
 }
