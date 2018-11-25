@@ -1,6 +1,7 @@
 {
   "name": "social-movies",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "description": "Aplicação para busca/listagem de filmes utilizando a api omdbapi.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
