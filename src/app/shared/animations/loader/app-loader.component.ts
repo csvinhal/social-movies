@@ -5,7 +5,7 @@ import { Component, Input, OnDestroy, TemplateRef } from '@angular/core';
   templateUrl: './app-loader.component.html',
   styleUrls: ['./app-loader.component.scss']
 })
-export class AppLoaderComponent implements OnDestroy {
+export class AppLoaderComponent {
   @Input()
   public blockWindow: boolean;
 
@@ -23,7 +23,4 @@ export class AppLoaderComponent implements OnDestroy {
   public blocking: boolean;
 
   private _loading: boolean;
-
-  public ngOnDestroy() {
-  }
 }

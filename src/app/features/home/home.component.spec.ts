@@ -8,13 +8,14 @@ import {
   NgbModalModule,
   NgbPaginationModule
 } from '@ng-bootstrap/ng-bootstrap';
+import { of } from 'rxjs';
 
+import { AppLoaderModule } from '../../shared/animations/loader/app-loader.module';
+import { Movie } from '../../shared/models/movie';
+import { MovieService } from '../../shared/services/movie.service';
 import { HomeComponent } from './home.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MovieTableComponent } from './movie-table/movie-table.component';
-import { MovieService } from 'src/app/shared/services/movie.service';
-import { of } from 'rxjs';
-import { Movie } from '../../shared/models/movie';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -30,6 +31,7 @@ describe('HomeComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         FormsModule,
+        AppLoaderModule,
         NgbModalModule,
         NgbPaginationModule
       ],
