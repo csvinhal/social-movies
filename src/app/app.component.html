@@ -1,3 +1,5 @@
 <div class="container">
-  <router-outlet></router-outlet>
+  <app-loader [loading]="loading" [blockWindow]="true">
+    <router-outlet></router-outlet>
+  </app-loader>
 </div>

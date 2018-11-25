@@ -8,13 +8,19 @@ import {
   NgbPaginationModule
 } from '@ng-bootstrap/ng-bootstrap';
 
+import { AppLoaderModule } from '../../../shared/animations/loader/app-loader.module';
 import { Movie } from '../../../shared/models/movie';
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { MovieTableComponent } from './movie-table.component';
 
 // Foi necessário o mock para injetar o componente MovieDetail e testar se o modal iria abrir no click do botão.
 @NgModule({
-  imports: [CommonModule, HttpClientTestingModule, NgbModalModule],
+  imports: [
+    CommonModule,
+    HttpClientTestingModule,
+    AppLoaderModule,
+    NgbModalModule
+  ],
   declarations: [MovieDetailComponent],
   entryComponents: [MovieDetailComponent]
 })
@@ -29,7 +35,7 @@ describe('MovieTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MovieTableComponent],
-      imports: [HomeTestMockModule, NgbPaginationModule],
+      imports: [HomeTestMockModule, AppLoaderModule, NgbPaginationModule],
       providers: [NgbActiveModal, CurrencyPipe]
     }).compileComponents();
   }));

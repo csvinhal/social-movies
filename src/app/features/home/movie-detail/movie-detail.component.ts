@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
 import { MovieService } from 'src/app/shared/services/movie.service';
 
 import { MovieDetail } from '../../../shared/models/movie-detail';
@@ -12,7 +12,10 @@ import { MovieDetail } from '../../../shared/models/movie-detail';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent {
+  @Input()
+  public loading: boolean;
   public movieDetail: MovieDetail;
+
   private unsubscribe = new Subject();
 
   constructor(
@@ -28,7 +31,10 @@ export class MovieDetailComponent {
   set imdb(value: string) {
     this.movieService
       .getMovie(value)
-      .pipe(takeUntil(this.unsubscribe))
+      .pipe(
+        takeUntil(this.unsubscribe),
+        finalize(() => (this.loading = false))
+      )
       .subscribe(
         (movieDetail: MovieDetail) => (this.movieDetail = movieDetail)
       );
