@@ -1,0 +1,21 @@
+<div
+  class="app-loader"
+  [ngClass]="{ loading: loading, blocking: blocking, fullscreen: blockWindow }"
+>
+  <div class="loader">
+    <div id="spinner" class="spinner">
+      <div class="bounce bounce-1"></div>
+      <div class="bounce bounce-2"></div>
+      <div class="bounce bounce-3"></div>
+    </div>
+
+    <div class="overlay"></div>
+  </div>
+
+  <div class="contents">
+    <ng-container
+      *ngTemplateOutlet="contents || originalContent"
+    ></ng-container>
+    <ng-template #originalContent> <ng-content></ng-content> </ng-template>
+  </div>
+</div>

@@ -1,4 +1,6 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,8 +9,7 @@ import { RouterModule } from '@angular/router';
 import { AppeRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeaturesModule } from './features/features.module';
-import { registerLocaleData } from '@angular/common';
-import localePt from '@angular/common/locales/pt';
+import { AppLoaderModule } from './shared/animations/loader/app-loader.module';
 
 registerLocaleData(localePt, 'pt');
 
@@ -21,6 +22,7 @@ registerLocaleData(localePt, 'pt');
     HttpClientModule,
     HttpClientJsonpModule,
     AppeRoutingModule,
+    AppLoaderModule,
     FeaturesModule
   ],
   providers: [

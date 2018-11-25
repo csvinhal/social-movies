@@ -1,0 +1,108 @@
+.app-loader {
+  position: relative;
+}
+
+.app-loader > .loader {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 200ms ease-out, display 200ms ease-out;
+  visibility: hidden;
+}
+
+.app-loader.fullscreen > .loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.app-loader > .loader > .overlay {
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  transition: opacity 200ms ease-out, display 200ms ease-out;
+}
+
+.app-loader > .loader > .spinner {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 9px);
+  transform: translate(-50%);
+  text-align: center;
+  vertical-align: middle;
+  display: table;
+  z-index: 2;
+}
+
+.app-loader.loading,
+.app-loader.blocking {
+  > .loader {
+    visibility: visible;
+  }
+
+  > .loader,
+  > .loader > .overlay {
+    z-index: 1;
+    cursor: wait;
+  }
+
+  > .contents {
+    z-index: 0 !important;
+  }
+}
+
+.app-loader.blocking.loading > .loader {
+  opacity: 1;
+}
+
+.app-loader.loading > .loader > .spinner > .bounce {
+  background-color: #3e3e42;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border-radius: 100%;
+  animation: bounce 1.2s infinite ease-out;
+
+  & + .bounce {
+    margin-left: 15px;
+  }
+
+  &.bounce-1 {
+    animation-delay: 0ms;
+  }
+
+  &.bounce-2 {
+    animation-delay: 100ms;
+  }
+
+  &.bounce-3 {
+    animation-delay: 200ms;
+  }
+}
+
+@keyframes bounce {
+  80% {
+    transform: scale(1);
+  }
+
+  90% {
+    transform: scale(1.8);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+::ng-deep .app-loader.loading.blocking s-loading-state .loader {
+  > .loader {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  > .contents {
+    z-index: 0 !important;
+  }
+}

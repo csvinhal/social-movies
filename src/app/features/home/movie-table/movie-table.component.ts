@@ -28,6 +28,7 @@ export class MovieTableComponent implements OnInit {
       size: 'lg',
       centered: true
     });
+    modalRef.componentInstance.loading = true;
     modalRef.componentInstance.imdb = imdb;
   }
 
