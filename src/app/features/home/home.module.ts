@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -22,6 +22,6 @@ import { MovieTableComponent } from './movie-table/movie-table.component';
     NgbPaginationModule
   ],
   entryComponents: [MovieDetailComponent],
-  providers: [NgbActiveModal]
+  providers: [NgbActiveModal, CurrencyPipe]
 })
 export class HomeModule {}

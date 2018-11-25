@@ -7,5 +7,5 @@ export interface MovieDetail extends Movie {
   director: string;
   poster: string;
   plot: string;
-  value: string;
+  boxOffice: string;
 }
