@@ -1,5 +1,7 @@
-<div id="movie-detail-modal" class="modal-header">
-  <h4 class="modal-title" id="modal-title">Detalhes do filme</h4>
+<div id="movie-detail-header" class="modal-header">
+  <h4 class="modal-title" id="modal-title">
+    {{ 'Detalhes do filme' | uppercase }}
+  </h4>
   <button type="button" class="close" aria-label="Close" (click)="close()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -22,9 +24,9 @@
 
       <div class="row">
         <div class="col-12">
-          <h1 class="text-center">
+          <h2 class="text-center">
             {{ movieDetail?.title }} ({{ movieDetail?.year }})
-          </h1>
+          </h2>
           <hr class="my-2" />
           <p class="text-justify">{{ movieDetail?.plot }}</p>
         </div>
@@ -58,7 +60,7 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="close()">
+  <button id="bnt-close" type="button" ngbAutofocus class="btn btn-secondary" (click)="close()">
     Fechar
   </button>
 </div>

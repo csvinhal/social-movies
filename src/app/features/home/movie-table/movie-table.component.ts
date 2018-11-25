@@ -15,8 +15,6 @@ export class MovieTableComponent implements OnInit {
   @Input()
   public movies: Movie[];
   @Output()
-  public select: EventEmitter<string> = new EventEmitter();
-  @Output()
   public pageChange: EventEmitter<number> = new EventEmitter();
   public page: number = 1;
   public maxSize: number = 3;
