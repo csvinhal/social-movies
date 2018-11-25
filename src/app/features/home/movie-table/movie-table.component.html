@@ -16,8 +16,9 @@
         <td id="td-year-{{i}}">{{ movie.year }}</td>
         <td id="td-action-{{i}}">
           <button
+            id="btn-detail-{{i}}"
             type="button"
-            class="btn btn-outline-dark"
+            class="btn btn btn-secondary"
             (click)="onSelect(movie.imdb)"
             data-toggle="modal"
             data-target="#movie-detail-modal"
